@@ -199,6 +199,10 @@ class Hooks {
         return static::_ldap_get_or_empty( $info,
             getenv( 'LDAP_EMAIL_ATTR' )? getenv( 'LDAP_EMAIL_ATTR' ) : 'mail' );
     }
+    private static function _memberof_from_ldap( $info ) {
+        return static::_ldap_get_or_empty( $info,
+            getenv( 'LDAP_MEMBER_OF' )? getenv( 'LDAP_MEMBER_OF' ) : 'memberof' );
+    }
 
     // check if given wiki username exist
     private static function _wiki_user_exist( $username ) {
