@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS /*_*/user_cwl_extended_account_data
  ubc_dept_id    int                                 not null,
  CWLLogin       varchar(50)                         not null,
  CWLNickname    varchar(150)                        not null,
+ CWLMemberOf    varchar(200)                        not null,
  CWLRole        varchar(120)                        not null,
  CWLSaltedID    varchar(200)                        not null,
  wgDBprefix     varchar(150)                        not null,
