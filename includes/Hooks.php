@@ -142,7 +142,7 @@ class Hooks {
             'CWLLogin' => $cwl_login_name,
             'CWLRole' => $ubcAffiliation,   // TODO: check if this field is used
             'CWLNickname' => $full_name,
-            'CWLMemberOf' => $member_of,
+            'CWLMemberOf' => 'WHATEVER',  //CWLMemberOf
             //'CWLSaltedID' => $CWLSaltedID, // no longer needed using PUID
             'account_status' => 1   //might never be used.
         );
