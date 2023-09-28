@@ -143,7 +143,7 @@ class Hooks {
             'CWLLogin' => $cwl_login_name,
             'CWLRole' => $ubcAffiliation,   // TODO: check if this field is used
             'CWLNickname' => $full_name,
-            'CWLMemberOf' => json_encode($ldapInfo), //'WHATEVER',  //CWLMemberOf
+            'CWLMemberOf' => 'WHATEVER:28092023:13:54',  //CWLMemberOf
             //'CWLSaltedID' => $CWLSaltedID, // no longer needed using PUID
             'account_status' => 1   //might never be used.
         );
