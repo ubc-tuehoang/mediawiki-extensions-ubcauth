@@ -77,6 +77,7 @@ class Hooks {
         $cwl_login_name = static::_cwl_login_from_ldap( $ldapInfo );
         $email = static::_email_from_ldap( $ldapInfo );
         $ubcAffiliation = '';   // TODO still needed? where to get it from LDAP?
+        //$ubcMemberOf = static::_memberof_from_ldap( $ldapInfo );
 
         $cwl_data = [];
         $cwl_data['puid'] = $puid;
@@ -142,7 +143,7 @@ class Hooks {
             'CWLLogin' => $cwl_login_name,
             'CWLRole' => $ubcAffiliation,   // TODO: check if this field is used
             'CWLNickname' => $full_name,
-            'CWLMemberOf' => 'WHATEVER',  //CWLMemberOf
+            'CWLMemberOf' => json_encode($ldapInfo), //'WHATEVER',  //CWLMemberOf
             //'CWLSaltedID' => $CWLSaltedID, // no longer needed using PUID
             'account_status' => 1   //might never be used.
         );
