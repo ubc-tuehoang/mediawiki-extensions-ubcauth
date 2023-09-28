@@ -125,6 +125,7 @@ class Hooks {
         $cwl_login_name = $cwl_data['cwl_login_name'];
         $ubcAffiliation = $cwl_data['ubcAffiliation'];
         $full_name = $cwl_data['full_name'];
+        $member_of = 'WHATEVERRRRR'; ##$cwl_data['memberOf'];
         $authManager->removeAuthenticationSessionData(
             static::CWL_DATA_SESSION_KEY
         );
