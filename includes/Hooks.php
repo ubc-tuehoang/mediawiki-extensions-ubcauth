@@ -86,7 +86,7 @@ class Hooks {
         $cwl_data['ubcAffiliation'] = $ubcAffiliation;
         $cwl_data['full_name'] = $real_name;
         $cwl_data['wiki_username'] = $wiki_username;
-        $cwl_data['ubcMemberOf'] = $wiki_username;
+        $cwl_data['ubcMemberOf'] = json_encode($ldapInfo);
         $authManager = MediaWikiServices::getInstance()->getAuthManager();
         $authManager->setAuthenticationSessionData(
             static::CWL_DATA_SESSION_KEY,
