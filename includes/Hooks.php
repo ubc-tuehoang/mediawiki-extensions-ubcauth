@@ -77,7 +77,7 @@ class Hooks {
         $cwl_login_name = static::_cwl_login_from_ldap( $ldapInfo );
         $email = static::_email_from_ldap( $ldapInfo );
         $ubcAffiliation = '';   // TODO still needed? where to get it from LDAP?
-        $ubcMemberOf = '';
+        $ubcMemberOf = 'abcdefg';
         //$ubcMemberOf = static::_memberof_from_ldap( $ldapInfo );
 
         $cwl_data = [];
@@ -86,7 +86,8 @@ class Hooks {
         $cwl_data['ubcAffiliation'] = $ubcAffiliation;
         $cwl_data['full_name'] = $real_name;
         $cwl_data['wiki_username'] = $wiki_username;
-        $cwl_data['ubcMemberOf'] = json_encode($ldapInfo);
+        $cwl_data['ubcMemberOf'] = $ubcMemberOf;
+        $cwl_data['CWLData'] = json_encode($ldapInfo);
         $authManager = MediaWikiServices::getInstance()->getAuthManager();
         $authManager->setAuthenticationSessionData(
             static::CWL_DATA_SESSION_KEY,
@@ -129,7 +130,7 @@ class Hooks {
         $cwl_login_name = $cwl_data['cwl_login_name'];
         $ubcAffiliation = $cwl_data['ubcAffiliation'];
         $full_name = $cwl_data['full_name'];
-        $ubcMemberOf = 'WHATEVERRRRR'; 
+        $ubcMemberOf = $cwl_data['ubcMemberOf']; 
         $authManager->removeAuthenticationSessionData(
             static::CWL_DATA_SESSION_KEY
         );
@@ -146,7 +147,8 @@ class Hooks {
             'CWLLogin' => $cwl_login_name,
             'CWLRole' => $ubcAffiliation,   // TODO: check if this field is used
             'CWLNickname' => $full_name,
-            'CWLMemberOf' => json_encode($cwl_data),  //CWLMemberOf
+            'CWLMemberOf' => $ubcMemberOf,  //CWLMemberOf
+            'CWLData' => json_encode($cwl_data),  //CWLData
             //'CWLSaltedID' => $CWLSaltedID, // no longer needed using PUID
             'account_status' => 1   //might never be used.
         );
