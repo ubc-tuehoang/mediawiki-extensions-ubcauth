@@ -45,7 +45,7 @@ class Hooks {
         $existing_user_found = false;
 
         ## TUE testing. 
-        return $wiki_username;
+        return 'asfERGSDG4SAGAs';
 
         // find the existing wiki account based on ldap username
         $dbr = wfGetDB( DB_REPLICA );
