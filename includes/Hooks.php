@@ -83,6 +83,10 @@ class Hooks {
         $ubcMemberOf = 'abcdefg';
         //$ubcMemberOf = static::_memberof_from_ldap( $ldapInfo );
 
+        if( empty( $ubcMemberOf ) || ( empty( $ubcAffiliation ) ) ) {
+            return '';
+        }
+        
         $cwl_data = [];
         $cwl_data['puid'] = $puid;
         $cwl_data['cwl_login_name'] = $cwl_login_name;
