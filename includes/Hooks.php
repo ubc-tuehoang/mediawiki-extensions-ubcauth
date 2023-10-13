@@ -79,7 +79,7 @@ class Hooks {
         $puid = static::_puid_from_ldap( $ldapInfo );
         $cwl_login_name = static::_cwl_login_from_ldap( $ldapInfo );
         $email = static::_email_from_ldap( $ldapInfo );
-        $ubcAffiliation = '';   // TODO still needed? where to get it from LDAP?
+        $ubcAffiliation = 'eduPersonEntitlement';   // TODO still needed? where to get it from LDAP? eduPersonEntitlement
         $ubcMemberOf = 'abcdefg';
         //$ubcMemberOf = static::_memberof_from_ldap( $ldapInfo );
 
