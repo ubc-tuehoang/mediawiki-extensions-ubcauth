@@ -91,7 +91,7 @@ class Hooks {
         ##TEST
         $cwl_student_number = '1234567890';
         
-        $ubcAffiliation = $cwl_edu_person_entitlement ? $cwl_edu_person_entitlement : ($cwl_employee_number ? $cwl_employee_number:($cwl_student_number ? $cwl_student_number:''));
+        ##$ubcAffiliation = $cwl_edu_person_entitlement ? $cwl_edu_person_entitlement : ($cwl_employee_number ? $cwl_employee_number:($cwl_student_number ? $cwl_student_number:''));
         
         if (!empty($ubcAffiliation)){
             $ubcMemberOf = $ubcAffiliation;
