@@ -77,9 +77,35 @@ class Hooks {
         $cwl_login_name = static::_cwl_login_from_ldap( $ldapInfo );
         $email = static::_email_from_ldap( $ldapInfo );
         $ubcAffiliation = '';   // TODO still needed? where to get it from LDAP?
-        $ubcMemberOf = 'abcdefg';
+        $ubcMemberOf = 'asdfasdf';
         //$ubcMemberOf = static::_memberof_from_ldap( $ldapInfo );
 
+        $cwl_student_number = '1234567890';
+        $cwl_employee_number = '';
+        $cwl_edu_person_entitlement = '';
+        
+        $cwl_student_number = static::_ubcedustudentnumber_from_ldap( $ldapInfo );
+        $cwl_employee_number = static::_employeenumber_from_ldap( $ldapInfo );
+        $cwl_edu_person_entitlement = static::_edupersonentitlement_from_ldap( $ldapInfo );
+        
+        $ubcAffiliation = $cwl_edu_person_entitlement ? $cwl_edu_person_entitlement : ($cwl_student_number ? $cwl_student_number:($cwl_student_number ? $cwl_student_number:''));
+        if (!empty($ubcAffiliation)){
+            $ubcMemberOf = $ubcAffiliation;
+        }
+        
+        /**
+        if ( getenv( 'LDAP_FLAG_ATTR' ) ){
+            $cwl_student_number = static::_ubcedustudentnumber_from_ldap( $ldapInfo );
+            $cwl_employee_number = static::_employeenumber_from_ldap( $ldapInfo );
+            $cwl_edu_person_entitlement = static::_edupersonentitlement_from_ldap( $ldapInfo );
+            
+            if ( empty($cwl_student_number) || empty($cwl_employee_number) || empty ($cwl_edu_person_entitlement) ){
+                $ubcAffiliation = $cwl_edu_person_entitlement ? $cwl_edu_person_entitlement : ($cwl_student_number ? $cwl_student_number:($cwl_student_number ? $cwl_student_number:''));
+                
+            }
+        }
+        **/
+        
         $cwl_data = [];
         $cwl_data['puid'] = $puid;
         $cwl_data['cwl_login_name'] = $cwl_login_name;
@@ -210,6 +236,18 @@ class Hooks {
     private static function _memberof_from_ldap( $info ) {
         return static::_ldap_get_or_empty( $info,
             getenv( 'LDAP_MEMBER_OF' )? getenv( 'LDAP_MEMBER_OF' ) : 'memberof' );
+    }
+    private static function _edupersonentitlement_from_ldap( $info ) {
+        return static::_edupersonentitlement_from_ldap( $info,
+            getenv( 'LDAP_EDUPERSONENTITLEMENT' )? getenv( 'LDAP_EDUPERSONENTITLEMENT' ) : 'eduPersonEntitlement' );
+    }
+    private static function _employeenumber_from_ldap( $info ) {
+        return static::_employeenumber_from_ldap( $info,
+            getenv( 'LDAP_EMPLOYEENUMBER' )? getenv( 'LDAP_EMPLOYEENUMBER' ) : 'employeeNumber' );
+    }
+    private static function _ubcedustudentnumber_from_ldap( $info ) {
+        return static::_ubcedustudentnumber_from_ldap( $info,
+            getenv( 'LDAP_UBCEDUSTUDENTNUMBER' )? getenv( 'LDAP_UBCEDUSTUDENTNUMBER' ) : 'ubcEduStudentNumber' );
     }
 
     // check if given wiki username exist
