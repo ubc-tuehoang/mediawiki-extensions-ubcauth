@@ -80,13 +80,16 @@ class Hooks {
         $ubcMemberOf = 'asdfasdf';
         //$ubcMemberOf = static::_memberof_from_ldap( $ldapInfo );
 
-        $cwl_student_number = '1234567890';
+        $cwl_student_number = '';
         $cwl_employee_number = '';
         $cwl_edu_person_entitlement = '';
         
         $cwl_student_number = static::_ubcedustudentnumber_from_ldap( $ldapInfo );
         $cwl_employee_number = static::_employeenumber_from_ldap( $ldapInfo );
         $cwl_edu_person_entitlement = static::_edupersonentitlement_from_ldap( $ldapInfo );
+
+        ##TEST
+        $cwl_student_number = '1234567890';
         
         $ubcAffiliation = $cwl_edu_person_entitlement ? $cwl_edu_person_entitlement : ($cwl_employee_number ? $cwl_employee_number:($cwl_student_number ? $cwl_student_number:''));
         
