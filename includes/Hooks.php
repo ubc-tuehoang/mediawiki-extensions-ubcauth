@@ -88,7 +88,8 @@ class Hooks {
         $cwl_employee_number = static::_employeenumber_from_ldap( $ldapInfo );
         $cwl_edu_person_entitlement = static::_edupersonentitlement_from_ldap( $ldapInfo );
         
-        $ubcAffiliation = $cwl_edu_person_entitlement ? $cwl_edu_person_entitlement : ($cwl_student_number ? $cwl_student_number:($cwl_student_number ? $cwl_student_number:''));
+        $ubcAffiliation = $cwl_edu_person_entitlement ? $cwl_edu_person_entitlement : ($cwl_employee_number ? $cwl_employee_number:($cwl_student_number ? $cwl_student_number:''));
+        
         if (!empty($ubcAffiliation)){
             $ubcMemberOf = $ubcAffiliation;
         }
